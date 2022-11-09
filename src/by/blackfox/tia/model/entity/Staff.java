@@ -1,17 +1,16 @@
 package by.blackfox.tia.model.entity;
 
-public abstract class Staff extends Container implements Payment, Worker{
+public class Staff extends Container {
+      private int quantity;
+    public Staff (){
+    }
 
-
-
-    public double work () {
-
-        return 0.0;
+    public Staff (int quantity){
+        this.quantity = quantity;
+        super.persons = new Person [quantity];
     }
 
 
-    public double pay (Container Staff) {
-        // нужно сложить все зарплаты сотрудниKов
-        return 0.0;
-    }
+
+
 }
