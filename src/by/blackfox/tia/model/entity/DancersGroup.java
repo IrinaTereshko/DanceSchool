@@ -8,11 +8,12 @@ public class DancersGroup extends Container implements Payer {
     private int groupHours;
 
 
-    public DancersGroup (int groupID, int groupHours) {
+    public DancersGroup(int groupID, int groupHours) {
         this.groupID = groupID;
         this.groupHours = groupHours;
-        super.persons = new Dancer [0];
+        super.persons = new Dancer[0];
     }
+
 
     public void getInfo() {
         InputOutput.Output("Group ID: " + groupID
@@ -20,6 +21,25 @@ public class DancersGroup extends Container implements Payer {
                 + ", quantity of dancers: " + persons.length + ".");
     }
 
+    public int getGroupID() {
+        return groupID;
+    }
+
+    public int getGroupHours() {
+        return groupHours;
+    }
+
+    public Person[] getDancersArray() {
+        return persons;
+    }
+
+    public void setGroupID(int groupID) {
+        this.groupID = groupID;
+    }
+
+    public void setGroupHours(int groupHours) {
+        this.groupHours = groupHours;
+    }
 
     @Override
     public double giveMoney() {

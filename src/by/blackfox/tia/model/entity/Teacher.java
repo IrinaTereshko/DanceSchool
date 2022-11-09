@@ -6,6 +6,8 @@ public class Teacher extends Person implements Recipient, Worker {
        private double salaryCoefficient;
        private int groupID;
 
+       private String position = "teacher";
+
     public Teacher(){
     }
 
@@ -20,6 +22,11 @@ public class Teacher extends Person implements Recipient, Worker {
         super.name = name;
         this.salaryCoefficient = salaryCoefficient;
     }
+
+    public String getPosition() {
+        return position;
+    }
+
     public  double work() {
         double salary=0;
          // "проводит занятия" - узнает kоличество часов у своей группы через groupId, считает и сообщает свою зп

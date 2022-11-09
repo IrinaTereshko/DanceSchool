@@ -29,6 +29,7 @@ public class DancersGroupCreation {
         for (Dancer dancer : allDancers) {
             if (dancer.getAge() >= minAge & dancer.getAge() <= maxAge) {
                 group.add(dancer);
+                dancer.setGroupID(groupID);
             }
         }
         return group;
@@ -41,6 +42,7 @@ public class DancersGroupCreation {
         for (Dancer dancer : allDancers) {
             if (dancer.getAge() >= minAge & dancer.getAge() <= maxAge & level == dancer.getLevel()) {
                 group.add(dancer);
+                dancer.setGroupID(groupID);
             }
         }
         return group;
@@ -53,6 +55,7 @@ public class DancersGroupCreation {
         for (Dancer dancer : allDancers) {
             if (level == dancer.getLevel()) {
                 group.add(dancer);
+                dancer.setGroupID(groupID);
             }
         }
         return group;

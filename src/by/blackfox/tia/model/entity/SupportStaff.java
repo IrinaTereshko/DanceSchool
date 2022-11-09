@@ -37,6 +37,11 @@ public class SupportStaff extends Person implements Recipient, Worker {
     public double getSalary() {
         return salary;
     }
+
+    public String getPosition() {
+        return position;
+    }
+
     public void setPosition(String position) {
         this.position = position;
     }

@@ -23,12 +23,12 @@ public class Container {
         persons = tempArray;
     }
 
-
-    public void del(String name) {
-        for (Person person : persons) {
-            if (name == person.getName()) {
-                person = null;
-            }
-        }
-    }
+// +нужно передвинуть пустую ячейKу в kонец и уменьшить массив на 1индеkс
+//    public void del(String name) {
+//        for (Person person : persons) {
+//            if (name == person.getName()) {
+//                person = null;
+//            }
+//        }
+//    }
 }
