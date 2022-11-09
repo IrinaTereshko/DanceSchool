@@ -5,7 +5,10 @@ public class Person {
 
     public double personalAccount;
 
-    public Person(){
+    public Person() {
     }
 
+    public String getName() {
+        return name;
     }
+}

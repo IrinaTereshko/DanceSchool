@@ -6,13 +6,13 @@ public class Dancer extends Person implements Payer {
 
     private int age;
     private int level;
-    private char sex;
+    private boolean sex;
     private int groupID;
 
     public Dancer() {
     }
 
-    public Dancer(String name, int age, int level, char sex, int groupID, double personalAccount) {
+    public Dancer(String name, int age, int level, boolean sex, int groupID, double personalAccount) {
         super.name = name;
         this.age = age;
         this.level = level;
@@ -21,29 +21,30 @@ public class Dancer extends Person implements Payer {
         super.personalAccount = personalAccount;
     }
 
-    public Dancer(String name, int age, int level, char sex, int groupID) {
+    public Dancer(String name, int age, int level, boolean sex, int groupID) {
         super.name = name;
         this.age = age;
         this.level = level;
         this.sex = sex;
         this.groupID = groupID;
     }
-    public Dancer(String name, int age, int level, char sex) {
+    public Dancer(String name, int age, int level, boolean sex) {
         super.name = name;
         this.age = age;
         this.level = level;
         this.sex = sex;
     }
-    public Dancer(String name, int age, char sex) {
+    public Dancer(String name, int age, boolean sex) {
         super.name = name;
         this.age = age;
         this.sex = sex;
     }
     public String getInfo() {
+       String sexByLetters= sex?"male":"female";
         return name
                 + ", age: " + age
                 + ", level: " + level
-                + ", sex: " + sex
+                + ", sex: " + sexByLetters
                 + ", groupID: " + groupID;
     }
     public String getName(){
@@ -52,7 +53,7 @@ public class Dancer extends Person implements Payer {
     public int getAge() {
         return age;
     }
-    public  char getSex(){
+    public  boolean getSex(){
         return sex;
     }
     public int getLevel(){
