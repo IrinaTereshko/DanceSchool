@@ -3,9 +3,7 @@ package by.blackfox.tia.model.entity;
 import by.blackfox.tia.view.InputOutput;
 
 public class Container {
-
     public Person[] persons;
-
     public Container() {
         persons = new Person[0];
     }

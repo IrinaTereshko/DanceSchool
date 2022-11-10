@@ -2,9 +2,12 @@ package by.blackfox.tia.model.entity;
 
 public class StaffGroup extends Container implements Worker {
 
-        @Override
+    @Override
     public double work() {
-        // возвращает зп всехсотрудниKов из списKа
-        return 0;
+        int allStaffGroupSalary = 0;
+        for (Person person : persons) {
+            allStaffGroupSalary += person.work();
+        }
+        return allStaffGroupSalary;
     }
 }

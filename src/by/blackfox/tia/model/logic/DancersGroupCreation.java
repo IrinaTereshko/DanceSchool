@@ -23,39 +23,42 @@ public class DancersGroupCreation {
 
 
     public DancersGroup createGroupByAge
-            (Dancer[] allDancers, int minAge, int maxAge, int level, int groupID, int groupHours) {
+            (Dancer[] allDancers, int minAge, int maxAge, int level, String groupID, int groupHours) {
 
                 DancersGroup group = new DancersGroup(groupID, groupHours);
         for (Dancer dancer : allDancers) {
             if (dancer.getAge() >= minAge & dancer.getAge() <= maxAge) {
                 group.add(dancer);
                 dancer.setGroupID(groupID);
+                dancer.setClassesHours(groupHours);
             }
         }
         return group;
     }
 
     public DancersGroup createGroupByAgeAndLevel
-            (Dancer[] allDancers, int minAge, int maxAge, int level, int groupID, int groupHours ) {
+            (Dancer[] allDancers, int minAge, int maxAge, int level, String groupID, int groupHours ) {
 
         DancersGroup group = new DancersGroup(groupID, groupHours);
         for (Dancer dancer : allDancers) {
             if (dancer.getAge() >= minAge & dancer.getAge() <= maxAge & level == dancer.getLevel()) {
                 group.add(dancer);
                 dancer.setGroupID(groupID);
+                dancer.setClassesHours(groupHours);
             }
         }
         return group;
     }
 
     public DancersGroup createGroupByLevel
-            (Dancer[] allDancers, int level, int groupID, int groupHours ) {
+            (Dancer[] allDancers, int level, String groupID, int groupHours ) {
 
         DancersGroup group = new DancersGroup(groupID, groupHours);
         for (Dancer dancer : allDancers) {
             if (level == dancer.getLevel()) {
                 group.add(dancer);
                 dancer.setGroupID(groupID);
+                dancer.setClassesHours(groupHours);
             }
         }
         return group;
@@ -63,12 +66,14 @@ public class DancersGroupCreation {
 
 
     public DancersGroup createGroupBySex
-            (Dancer[] allDancers, int groupID, int groupHours, boolean sex ) {
+            (Dancer[] allDancers, String groupID, int groupHours, boolean sex ) {
 
         DancersGroup group = new DancersGroup(groupID, groupHours);
         for (Dancer dancer : allDancers) {
             if (sex == dancer.getSex()) {
                 group.add(dancer);
+                dancer.setGroupID(groupID);
+                dancer.setClassesHours(groupHours);
             }
         }
         return group;

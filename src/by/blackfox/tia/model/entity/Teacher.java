@@ -5,12 +5,8 @@ public class Teacher extends Person implements Recipient, Worker {
    public final int TEACHER_ONE_HOUR_SALARY = 5;
        private double salaryCoefficient;
        private int groupID;
-
-       private String position = "teacher";
-
     public Teacher(){
     }
-
     public Teacher (String name, double salaryCoefficient, int groupID, double personalAccount){
         super.name = name;
         this.salaryCoefficient = salaryCoefficient;
@@ -22,12 +18,7 @@ public class Teacher extends Person implements Recipient, Worker {
         super.name = name;
         this.salaryCoefficient = salaryCoefficient;
     }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public  double work() {
+        public  double work() {
         double salary=0;
          // "проводит занятия" - узнает kоличество часов у своей группы через groupId, считает и сообщает свою зп
         return salary;
@@ -35,6 +26,6 @@ public class Teacher extends Person implements Recipient, Worker {
 
     @Override
     public void getMoney(double money) {
-        //  зачисляет на свой счет
+        super.personalAccount+=money;
             }
 }

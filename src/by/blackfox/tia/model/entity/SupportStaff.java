@@ -4,7 +4,6 @@ public class SupportStaff extends Person implements Recipient, Worker {
     private String position;
     private double salary;
 
-
     public SupportStaff() {
     }
 
@@ -15,7 +14,7 @@ public class SupportStaff extends Person implements Recipient, Worker {
         super.personalAccount = personalAccount;
     }
 
-    public SupportStaff(String name, String position, double salary ) {
+    public SupportStaff(String name, String position, double salary) {
         super.name = name;
         this.position = position;
         this.salary = salary;
@@ -24,7 +23,8 @@ public class SupportStaff extends Person implements Recipient, Worker {
     public SupportStaff(String name, String position) {
         super.name = name;
         this.position = position;
-            }
+    }
+
     public String getInfo() {
         return name
                 + ", position: " + position
@@ -34,6 +34,7 @@ public class SupportStaff extends Person implements Recipient, Worker {
     public String getNameAndPosition() {
         return name + ", position: " + position;
     }
+
     public double getSalary() {
         return salary;
     }
@@ -45,17 +46,17 @@ public class SupportStaff extends Person implements Recipient, Worker {
     public void setPosition(String position) {
         this.position = position;
     }
+
     public void setSalary(double salary) {
         this.salary = salary;
     }
 
     public double work() {
-        //  сообщает  свою зп
         return salary;
     }
 
     @Override
     public void getMoney(double money) {
-        // добавляет деньги на свой счет
+        super.personalAccount += money;
     }
 }
