@@ -1,6 +1,6 @@
 package by.blackfox.tia.model.entity;
 
-public class SupportStaff extends Person implements Recipient, Worker {
+public class SupportStaff extends Person {
     private String position;
     private double salary;
 
@@ -41,6 +41,7 @@ public class SupportStaff extends Person implements Recipient, Worker {
     }
 
 
+    @Override
     public double work() {
         return salary;
     }

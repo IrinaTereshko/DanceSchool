@@ -2,7 +2,7 @@ package by.blackfox.tia.model.entity;
 
 import java.util.Arrays;
 
-public class Teacher extends DancingStaff implements Recipient, Worker, PricesAndDivisions {
+public class Teacher extends DancingStaff {
 
 
     private double salaryCoefficient;

@@ -10,7 +10,7 @@ public class InputOutput {
 
     public static void Output (Person[] persons){
         for (Person person: persons) {
-            System.out.println(person.name);
+            System.out.println(person.getName());
                     }
     }
 }

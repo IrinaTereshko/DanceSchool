@@ -2,7 +2,7 @@ package by.blackfox.tia.model.entity;
 
 import java.util.Arrays;
 
-public class Dancer extends DancingStaff implements Payer, Worker, PricesAndDivisions {
+public class Dancer extends DancingStaff implements Payer {
     private int age;
     private boolean sex;
     private int level;

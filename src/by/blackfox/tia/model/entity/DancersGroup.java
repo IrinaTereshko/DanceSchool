@@ -7,7 +7,8 @@ public class DancersGroup extends Container {
     private String groupID;
     private int groupHours;
 
-    //обдумать нужно ли создание группы с ограниченнным kоличеством участниkов
+    //сделать создание группы с ограниченнным kоличеством участниkов: add, del,constructor,
+    // add variable:
     // private int quantityOfDancers;
 
     public DancersGroup() {

@@ -8,11 +8,12 @@ public class Container {
     public Container() {
         persons = new Person[0];
     }
-    public int getListSize () {
-        return persons.length;
+
+    public Container(Person[] persons){
+        this.persons=persons;
     }
 
-    public void setPersons (Person [] persons) {
+    public void setPersons(Person[] persons){
         this.persons=persons;
     }
     public void add(Person person) {
