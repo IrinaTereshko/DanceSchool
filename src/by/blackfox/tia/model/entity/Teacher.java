@@ -1,31 +1,44 @@
 package by.blackfox.tia.model.entity;
 
-public class Teacher extends Person implements Recipient, Worker {
+import java.util.Arrays;
 
-   public final int TEACHER_ONE_HOUR_SALARY = 5;
-       private double salaryCoefficient;
-       private int groupID;
-    public Teacher(){
-    }
-    public Teacher (String name, double salaryCoefficient, int groupID, double personalAccount){
-        super.name = name;
-        this.salaryCoefficient = salaryCoefficient;
-        this.groupID = groupID;
-        super.personalAccount = personalAccount;
+public class Teacher extends DancingStaff implements Recipient, Worker, PricesAndDivisions {
+
+
+    private double salaryCoefficient;
+
+    public Teacher() {
     }
 
-    public Teacher (String name, double salaryCoefficient){
-        super.name = name;
+    public Teacher(String name, double salaryCoefficient, String groupID) {
+        setName(name);
+        this.salaryCoefficient = salaryCoefficient;
+        setGroupIDs(new String[0]);
+        addGroupID(groupID);
+    }
+
+    public String getInfo() {
+        return getName() + ",\n group IDs: " + Arrays.toString(getGroupIDs())
+                + ",\n work hours per week: " + getWorkHoursPerWeek()
+                + ", \n salary coefficient: " + salaryCoefficient;
+    }
+
+    public double getSalaryCoefficient() {
+        return salaryCoefficient;
+    }
+
+     public void setSalaryCoefficient(double salaryCoefficient) {
         this.salaryCoefficient = salaryCoefficient;
     }
-        public  double work() {
-        double salary=0;
-         // "проводит занятия" - узнает kоличество часов у своей группы через groupId, считает и сообщает свою зп
-        return salary;
+
+    public double work() {
+        //  считает и сообщает свою зп за месяц ("проводит занятия")
+        return getWorkHoursPerWeek() * WEEKS_IN_MONTH * TEACHER_ONE_HOUR_SALARY * salaryCoefficient;
     }
 
     @Override
+    // зачисляет зп на свой счет
     public void getMoney(double money) {
-        super.personalAccount+=money;
-            }
+        setPersonalAccount(getPersonalAccount()+money);
+    }
 }

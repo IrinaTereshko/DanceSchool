@@ -1,64 +1,44 @@
 package by.blackfox.tia.model.entity;
 
-public class Dancer extends Person implements Payer, Worker {
-    public static final int MIN_LEVEL = 0;
-    public static final int MAX_LEVEL = 3;
-    public static final double PRICE_FOR_ONE_HOUR = 5;
+import java.util.Arrays;
 
-
+public class Dancer extends DancingStaff implements Payer, Worker, PricesAndDivisions {
     private int age;
-    private int level;
     private boolean sex;
-    private String groupID;
-
-    private int classesHours;
+    private int level;
 
     public Dancer() {
     }
 
-    public Dancer
-            (String name, int age, int level, boolean sex, String groupID, int classesHours, double personalAccount) {
-        super.name = name;
-        this.age = age;
-        this.level = level;
-        this.sex = sex;
-        this.groupID = groupID;
-        this.classesHours = classesHours;
-        super.personalAccount = personalAccount;
-    }
-
     public Dancer(String name, int age, int level, boolean sex, String groupID) {
-        super.name = name;
+        setName(name);
         this.age = age;
         this.level = level;
         this.sex = sex;
-        this.groupID = groupID;
+        setGroupIDs(new String[0]);
+        addGroupID(groupID);
     }
 
-    public Dancer(String name, int age, int level, boolean sex) {
-        super.name = name;
+    public Dancer(String name, int age, boolean sex, int level) {
+        setName(name);
         this.age = age;
-        this.level = level;
         this.sex = sex;
+        this.level = level;
     }
 
     public Dancer(String name, int age, boolean sex) {
-        super.name = name;
+        setName(name);
         this.age = age;
         this.sex = sex;
     }
 
     public String getInfo() {
         String sexByLetters = sex ? "male" : "female";
-        return name
+        return getName()
                 + ", age: " + age
                 + ", level: " + level
                 + ", sex: " + sexByLetters
-                + ", groupID: " + groupID;
-    }
-
-    public String getName() {
-        return name;
+                + ",\n groupsIDs: " + Arrays.toString(getGroupIDs());
     }
 
     public int getAge() {
@@ -73,32 +53,22 @@ public class Dancer extends Person implements Payer, Worker {
         return level;
     }
 
-    public String getGroupID() {
-        return groupID;
-    }
-
     public void setLevel(int level) {
         if (level >= MIN_LEVEL & level <= MAX_LEVEL)
             this.level = level;
     }
 
-    public void setGroupID(String groupID) {
-        this.groupID += groupID;
-    }
-
-    public void setClassesHours(int classesHours) {
-        this.classesHours += classesHours;
-    }
-
 
     @Override
-    public double giveMoney() {
-        //платит  за свои занятия, в зависимости от kоличества часов занятий в группе
-        // делает минус в своем баллансе
-        return 0;
-    }
-        @Override
+    //считает плату за занятия за месяц ("посещает занятия")
     public double work() {
-        return classesHours * PRICE_FOR_ONE_HOUR;
+        return getWorkHoursPerWeek() * PRICE_FOR_ONE_HOUR * WEEKS_IN_MONTH;
+    }
+
+    @Override
+    // "платит за занятия", отнимает деньги со своего счета
+    public double giveMoney() {
+        setPersonalAccount(getPersonalAccount() - work());
+        return work();
     }
 }

@@ -4,6 +4,7 @@ import by.blackfox.tia.view.InputOutput;
 
 public class Container {
     public Person[] persons;
+
     public Container() {
         persons = new Person[0];
     }
@@ -11,6 +12,9 @@ public class Container {
         return persons.length;
     }
 
+    public void setPersons (Person [] persons) {
+        this.persons=persons;
+    }
     public void add(Person person) {
         Person[] tempArray = new Person[persons.length + 1];
         for (int i = 0; i < persons.length; i++) {
@@ -21,12 +25,21 @@ public class Container {
         persons = tempArray;
     }
 
-// +нужно передвинуть пустую ячейKу в kонец и уменьшить массив на 1индеkс
-//    public void del(String name) {
-//        for (Person person : persons) {
-//            if (name == person.getName()) {
-//                person = null;
-//            }
-//        }
-//    }
+    public void del(int personalID) {
+        Person[] tempArray = new Person[persons.length - 1];
+        for (int i = 0; i < persons.length; i++) {
+            if (persons[i].getPersonalID() == personalID) {
+                persons[i] = null;
+                for (int j = i; j < persons.length - 1; j++) {
+                    persons[j] = persons[j + 1];
+                }
+                i = persons.length;
+            }
+        }
+        for (int i = 0; i < tempArray.length; i++) {
+            tempArray[i]=persons[i];
+        }
+        persons=tempArray;
+    }
+
 }

@@ -11,7 +11,9 @@ public class Main {
 
         Container AllDancers = new Container();
         Container AllStaff = new Container();
+        DancersGroup[] ListOfDancersGroups = new DancersGroup[0];
 
-        // весь персонал и танцоров при инициализации нужно еще добавлять в массивы
+
+        // весь персонал и танцоров  и группы при инициализации нужно еще добавлять в массивы и назначать personalID
     }
 }

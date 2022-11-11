@@ -1,6 +1,8 @@
 package by.blackfox.tia.model.logic;
 
-public class Budget {
+import by.blackfox.tia.model.entity.PricesAndDivisions;
+
+public class Budget implements PricesAndDivisions {
 
     public static double calculateProfit (){
 
