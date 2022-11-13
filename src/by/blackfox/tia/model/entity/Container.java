@@ -1,7 +1,5 @@
 package by.blackfox.tia.model.entity;
 
-import by.blackfox.tia.view.InputOutput;
-
 public class Container {
     private Person[] persons;
 
@@ -10,7 +8,9 @@ public class Container {
     }
 
     public Container(Person[] persons) {
-        this.persons = persons;
+        if (persons != null) {
+            this.persons = persons;
+        }
     }
 
     public Person[] getPersons() {
@@ -18,35 +18,42 @@ public class Container {
     }
 
     public void setPersons(Person[] persons) {
-        this.persons = persons;
+        if (persons != null)
+            this.persons = persons;
     }
 
     public void add(Person person) {
-        Person[] tempArray = new Person[persons.length + 1];
-        for (int i = 0; i < persons.length; i++) {
-            tempArray[i] = persons[i];
-        }
-        tempArray[persons.length] = person;
+        if (person != null) {
 
-        persons = tempArray;
+            Person[] tempArray = new Person[persons.length + 1];
+            for (int i = 0; i < persons.length; i++) {
+                tempArray[i] = persons[i];
+            }
+            tempArray[persons.length] = person;
+
+            persons = tempArray;
+        }
     }
 
     public void del(Person person) {
-        int id = person.getPersonalID();
-        Person[] tempArray = new Person[persons.length - 1];
-        for (int i = 0; i < persons.length; i++) {
-            if (persons[i].getPersonalID() == id) {
-                persons[i] = null;
-                for (int j = i; j < persons.length - 1; j++) {
-                    persons[j] = persons[j + 1];
+        if (person != null & persons.length > 0) {
+
+            int id = person.getPersonalID();
+            Person[] tempArray = new Person[persons.length - 1];
+            for (int i = 0; i < persons.length; i++) {
+                if (persons[i].getPersonalID() == id) {
+                    persons[i] = null;
+                    for (int j = i; j < persons.length - 1; j++) {
+                        persons[j] = persons[j + 1];
+                    }
+                    i = persons.length;
                 }
-                i = persons.length;
             }
+            for (int i = 0; i < tempArray.length; i++) {
+                tempArray[i] = persons[i];
+            }
+            persons = tempArray;
         }
-        for (int i = 0; i < tempArray.length; i++) {
-            tempArray[i] = persons[i];
-        }
-        persons = tempArray;
     }
 
 }

@@ -16,14 +16,35 @@ public class Search {
         return null;
     }
 
-    public Person[]  searchDancersByAge (int age) {
+    public Person[] searchDancersByAge(int age) {
         Container resultSearch = new Container();
-        for (Person person: DataBase.getAllDancers()) {
-            if (((Dancer)person).getAge()==age){
+        for (Person person : DataBase.getAllDancers()) {
+            if (((Dancer) person).getAge() == age) {
                 resultSearch.add(person);
             }
         }
         return resultSearch.getPersons();
     }
+
+    public Person[] searchDancersByLevel(int level) {
+        Container resultSearch = new Container();
+        for (Person person : DataBase.getAllDancers()) {
+            if (((Dancer) person).getLevel() == level) {
+                resultSearch.add(person);
+            }
+        }
+        return resultSearch.getPersons();
+    }
+
+    public Person[] searchDancersByWorkHours(int workHours) {
+        Container resultSearch = new Container();
+        for (Person person : DataBase.getAllDancers()) {
+            if (((Dancer) person).getWorkHoursPerWeek() == workHours) {
+                resultSearch.add(person);
+            }
+        }
+        return resultSearch.getPersons();
+    }
+    // Дописать поисk по другим параметрам
 
 }

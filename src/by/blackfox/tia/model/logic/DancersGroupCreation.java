@@ -12,7 +12,7 @@ public class DancersGroupCreation {
         for (Dancer dancer : allDancers) {
             if (dancer.getAge() >= minAge & dancer.getAge() <= maxAge) {
                 group.add(dancer);
-                fixChanges(dancer, groupID,groupHours);
+                fixChanges(dancer, groupID, groupHours);
             }
         }
         return group;
@@ -25,7 +25,7 @@ public class DancersGroupCreation {
         for (Dancer dancer : allDancers) {
             if (dancer.getAge() >= minAge & dancer.getAge() <= maxAge & level == dancer.getLevel()) {
                 group.add(dancer);
-                fixChanges(dancer, groupID,groupHours);
+                fixChanges(dancer, groupID, groupHours);
             }
         }
         return group;
@@ -38,7 +38,7 @@ public class DancersGroupCreation {
         for (Dancer dancer : allDancers) {
             if (level == dancer.getLevel()) {
                 group.add(dancer);
-                fixChanges(dancer, groupID,groupHours);
+                fixChanges(dancer, groupID, groupHours);
             }
         }
         return group;
@@ -52,13 +52,13 @@ public class DancersGroupCreation {
         for (Dancer dancer : allDancers) {
             if (sex == dancer.getSex()) {
                 group.add(dancer);
-                fixChanges(dancer, groupID,groupHours);
+                fixChanges(dancer, groupID, groupHours);
             }
         }
         return group;
     }
 
-    static void fixChanges (Dancer dancer, String groupID, int groupHours){
+    static void fixChanges(Dancer dancer, String groupID, int groupHours) {
         dancer.addGroupID(groupID);
         dancer.setWorkHoursPerWeek(groupHours);
     }

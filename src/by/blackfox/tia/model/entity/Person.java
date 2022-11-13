@@ -3,13 +3,13 @@ package by.blackfox.tia.model.entity;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Person implements Worker, Recipient, PricesAndDivisions {
-    private static  AtomicInteger counterPersonalID = new AtomicInteger(0);
+    private static final AtomicInteger counterPersonalID = new AtomicInteger(0);
     private String name;
-    private int  personalID;
+    private final int  personalID;
     private double personalAccount;
 
     public Person() {
-        name= null;
+        name= " ";
         personalID = counterPersonalID.incrementAndGet();
         personalAccount = 0;
     }

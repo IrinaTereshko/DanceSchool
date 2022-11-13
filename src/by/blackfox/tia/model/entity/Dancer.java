@@ -12,8 +12,10 @@ public class Dancer extends DancingStaff implements Payer {
 
     public Dancer(String name, int age, int level, boolean sex, String groupID) {
         setName(name);
-        this.age = age;
-        this.level = level;
+        if (age >= DIVISION1_MIN_AGE & age<=DIVISION5_MAX_AGE)
+        {this.age = age;}
+        if (level >= MIN_LEVEL & level <= MAX_LEVEL)
+        {this.level = level;}
         this.sex = sex;
         setGroupIDs(new String[0]);
         addGroupID(groupID);
@@ -21,18 +23,14 @@ public class Dancer extends DancingStaff implements Payer {
 
     public Dancer(String name, int age, boolean sex, int level) {
         setName(name);
-        this.age = age;
-        this.sex = sex;
-        this.level = level;
-    }
-
-    public Dancer(String name, int age, boolean sex) {
-        setName(name);
-        this.age = age;
+        if (age >= DIVISION1_MIN_AGE & age<=DIVISION5_MAX_AGE)
+        {this.age = age;}
+        if (level >= MIN_LEVEL & level <= MAX_LEVEL)
+        {this.level = level;}
         this.sex = sex;
     }
 
-    public String getInfo() {
+        public String getInfo() {
         String sexByLetters = sex ? "male" : "female";
         return getName()
                 + ", age: " + age

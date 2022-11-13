@@ -4,7 +4,7 @@ import by.blackfox.tia.view.InputOutput;
 
 public class DancersGroup extends Container {
 
-    private String groupID;
+    private final String groupID;
     private int groupHours;
 
     //сделать создание группы с ограниченнным kоличеством участниkов: add, del,constructor,
@@ -12,7 +12,7 @@ public class DancersGroup extends Container {
     // private int quantityOfDancers;
 
     public DancersGroup() {
-        groupID = null;
+        groupID = " ";
         groupHours = 0;
         setPersons(new DancingStaff[0]);
     }
@@ -42,24 +42,17 @@ public class DancersGroup extends Container {
         return getPersons();
     }
 
-// если менять часы, нужно, чтобы они изменились у всех танцоров группы!!!
-
-//    public void setGroupHours(int groupHours) {
-//        this.groupHours = groupHours;
-//
-//    }
+    public void changeGroupHours(int groupHours) {
+        // меняет часы работы в самой группе и  всем участниkам группы
+        for (Person person : getPersons()) {
+            ((DancingStaff) person).setWorkHoursPerWeek(groupHours - this.groupHours);
+        }
+        this.groupHours = groupHours;
+    }
 
     public void add(DancingStaff dancingStaff) {
         // добавляет танцора или педагога в группу, записывает ему id группы и добавляет часы занятий
-       int length = getPersons().length;
-        Person[] tempArray = new Person[length + 1];
-        for (int i = 0; i < length; i++) {
-            tempArray[i] = getPersons()[i];
-        }
-        tempArray[length] = dancingStaff;
-
-        setPersons(tempArray);
-
+        DancersGroup.super.add(dancingStaff);
         dancingStaff.addGroupID(groupID);
         dancingStaff.setWorkHoursPerWeek(groupHours);
 
@@ -68,29 +61,12 @@ public class DancersGroup extends Container {
 
     public void del(DancingStaff dancingStaff) {
 // удаляет танцора или педагога из группы, удаляет из его списKа id группы и уменьшает часы занятий
-        int length = getPersons().length;
-        Person[] tempPersons = getPersons();
-        Person[] tempArray = new Person[length - 1];
-        int id = dancingStaff.getPersonalID();
-        for (int i = 0; i < length; i++) {
-            if (tempPersons[i].getPersonalID() == id ) {
-                tempPersons[i] = null;
-                for (int j = i; j < length - 1; j++) {
-                    tempPersons[j] = tempPersons[j + 1];
-                }
-                i = length;
-            }
-        }
-        for (int i = 0; i < tempArray.length; i++) {
-            tempArray[i]=tempPersons[i];
-        }
-        setPersons(tempArray);
-
+        DancersGroup.super.del(dancingStaff);
         dancingStaff.delGroupID(groupID);
         dancingStaff.setWorkHoursPerWeek(-groupHours);
     }
-
 }
+
 
 
 

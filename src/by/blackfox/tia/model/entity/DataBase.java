@@ -5,7 +5,7 @@ public class DataBase {
     private static final Container AllStaff = new Container(new Person[0]);
 
 //   private static AllGroups[]
-//    ??? kak хранить, описать геттеры и добавления и изменения
+//    здесь хранить все созданные группы, описать геттеры и добавления и изменения
 
     public static Person[] getAllStaff() {
         return AllStaff.getPersons();
@@ -56,9 +56,7 @@ public class DataBase {
     }
 
     public static void delPerson(Person person) {
-        // удаляет из базы и обнуляет объеkт
-        AllStaff.del(person);
-        person = null;
+                AllStaff.del(person);
     }
 
 

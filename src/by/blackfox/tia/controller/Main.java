@@ -9,9 +9,9 @@ public class Main {
     public static void main(String[] args) {
 
 
-        DancersGroup[] ListOfDancersGroups = new DancersGroup[0];
+        Object[] ListOfDancersGroups = new DancersGroup[0];
 
 
-        // весь персонал и танцоров  и группы при инициализации нужно еще добавлять в массивы и назначать personalID
+        // весь персонал и танцоров  и группы при инициализации нужно еще добавлять в массив DataBase.add
     }
 }
