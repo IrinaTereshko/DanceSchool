@@ -27,7 +27,7 @@ public class DancersGroup extends Container {
     public void getInfo() {
         InputOutput.Output("Group ID: " + groupID
                 + ", group hours: " + groupHours
-                + ", current quantity of dancers: " + persons.length + ".");
+                + ", current quantity of dancers: " + getPersons().length + ".");
     }
 
     public String getGroupID() {
@@ -39,7 +39,7 @@ public class DancersGroup extends Container {
     }
 
     public Person[] getDancersArray() {
-        return persons;
+        return getPersons();
     }
 
 // если менять часы, нужно, чтобы они изменились у всех танцоров группы!!!
@@ -51,13 +51,14 @@ public class DancersGroup extends Container {
 
     public void add(DancingStaff dancingStaff) {
         // добавляет танцора или педагога в группу, записывает ему id группы и добавляет часы занятий
-        Person[] tempArray = new Person[persons.length + 1];
-        for (int i = 0; i < persons.length; i++) {
-            tempArray[i] = persons[i];
+       int length = getPersons().length;
+        Person[] tempArray = new Person[length + 1];
+        for (int i = 0; i < length; i++) {
+            tempArray[i] = getPersons()[i];
         }
-        tempArray[persons.length] = dancingStaff;
+        tempArray[length] = dancingStaff;
 
-        persons = tempArray;
+        setPersons(tempArray);
 
         dancingStaff.addGroupID(groupID);
         dancingStaff.setWorkHoursPerWeek(groupHours);
@@ -67,21 +68,23 @@ public class DancersGroup extends Container {
 
     public void del(DancingStaff dancingStaff) {
 // удаляет танцора или педагога из группы, удаляет из его списKа id группы и уменьшает часы занятий
-        Person[] tempArray = new Person[persons.length - 1];
+        int length = getPersons().length;
+        Person[] tempPersons = getPersons();
+        Person[] tempArray = new Person[length - 1];
         int id = dancingStaff.getPersonalID();
-        for (int i = 0; i < persons.length; i++) {
-            if (persons[i].getPersonalID() == id ) {
-                persons[i] = null;
-                for (int j = i; j < persons.length - 1; j++) {
-                    persons[j] = persons[j + 1];
+        for (int i = 0; i < length; i++) {
+            if (tempPersons[i].getPersonalID() == id ) {
+                tempPersons[i] = null;
+                for (int j = i; j < length - 1; j++) {
+                    tempPersons[j] = tempPersons[j + 1];
                 }
-                i = persons.length;
+                i = length;
             }
         }
         for (int i = 0; i < tempArray.length; i++) {
-            tempArray[i]=persons[i];
+            tempArray[i]=tempPersons[i];
         }
-        persons=tempArray;
+        setPersons(tempArray);
 
         dancingStaff.delGroupID(groupID);
         dancingStaff.setWorkHoursPerWeek(-groupHours);

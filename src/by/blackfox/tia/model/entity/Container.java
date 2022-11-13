@@ -3,19 +3,24 @@ package by.blackfox.tia.model.entity;
 import by.blackfox.tia.view.InputOutput;
 
 public class Container {
-    public Person[] persons;
+    private Person[] persons;
 
     public Container() {
         persons = new Person[0];
     }
 
-    public Container(Person[] persons){
-        this.persons=persons;
+    public Container(Person[] persons) {
+        this.persons = persons;
     }
 
-    public void setPersons(Person[] persons){
-        this.persons=persons;
+    public Person[] getPersons() {
+        return persons;
     }
+
+    public void setPersons(Person[] persons) {
+        this.persons = persons;
+    }
+
     public void add(Person person) {
         Person[] tempArray = new Person[persons.length + 1];
         for (int i = 0; i < persons.length; i++) {
@@ -26,10 +31,11 @@ public class Container {
         persons = tempArray;
     }
 
-    public void del(int personalID) {
+    public void del(Person person) {
+        int id = person.getPersonalID();
         Person[] tempArray = new Person[persons.length - 1];
         for (int i = 0; i < persons.length; i++) {
-            if (persons[i].getPersonalID() == personalID) {
+            if (persons[i].getPersonalID() == id) {
                 persons[i] = null;
                 for (int j = i; j < persons.length - 1; j++) {
                     persons[j] = persons[j + 1];
@@ -38,9 +44,9 @@ public class Container {
             }
         }
         for (int i = 0; i < tempArray.length; i++) {
-            tempArray[i]=persons[i];
+            tempArray[i] = persons[i];
         }
-        persons=tempArray;
+        persons = tempArray;
     }
 
 }

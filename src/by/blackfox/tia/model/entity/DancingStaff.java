@@ -22,8 +22,8 @@ public class DancingStaff extends Person  {
         this.groupIDs = groupIDs;
     }
 
-    public void setWorkHoursPerWeek (int hours){
-        workHoursPerWeek+=workHoursPerWeek;
+    public void setWorkHoursPerWeek (int workHoursPerWeek){
+        this.workHoursPerWeek+=workHoursPerWeek;
     }
 
     //??? подумать нужен ли метод???
@@ -56,7 +56,7 @@ public class DancingStaff extends Person  {
     public void delGroupID(String groupID) {
         String[] tempArray = new String[groupIDs.length - 1];
         for (int i = 0; i < groupIDs.length; i++) {
-            if (groupIDs[i] == groupID) {
+            if (groupIDs[i].equals(groupID)) {
                 groupIDs[i] = null;
                 for (int j = i; j < groupIDs.length - 1; j++) {
                     groupIDs[j] = groupIDs[j + 1];
