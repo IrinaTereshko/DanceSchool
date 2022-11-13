@@ -5,17 +5,13 @@ public class SupportStaff extends Person {
     private double salary;
 
     public SupportStaff() {
+        super();
     }
 
     public SupportStaff(String name, String position, double salary) {
-        setName(name);
+        super(name);
         this.position = position;
         this.salary = salary;
-    }
-
-    public SupportStaff(String name, String position) {
-        setName(name);
-        this.position = position;
     }
 
     public String getInfo() {
@@ -33,11 +29,13 @@ public class SupportStaff extends Person {
     }
 
     public void setPosition(String position) {
-        this.position = position;
+        if (position != null)
+        {this.position = position;}
     }
 
     public void setSalary(double salary) {
-        this.salary = salary;
+       if (salary >0){
+        this.salary = salary;}
     }
 
 

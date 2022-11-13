@@ -7,10 +7,17 @@ public class DancingStaff extends Person {
     private int workHoursPerWeek;
 
     public DancingStaff() {
+        super();
         groupIDs = new String[0];
         workHoursPerWeek = 0;
     }
+// часы работы меняются тольkо в случае добавления или удаления объеkта в группу
 
+    public DancingStaff(String name) {
+        super(name);
+        groupIDs = new String[0];
+              workHoursPerWeek = 0;
+    }
 
     public String[] getGroupIDs() {
         return groupIDs;
@@ -20,15 +27,11 @@ public class DancingStaff extends Person {
         return workHoursPerWeek;
     }
 
-    public void setGroupIDs(String[] groupIDs) {
-        if (groupIDs != null) {
-            this.groupIDs = groupIDs;
-        }
-    }
 
     public void setWorkHoursPerWeek(int workHoursPerWeek) {
         this.workHoursPerWeek += workHoursPerWeek;
     }
+// часы мошут добавляться и отниматься, поэтому могут быть и положительными и отрицательными
 
     public void addGroupID(String groupID) {
         if (groupID != null) {

@@ -12,15 +12,16 @@ public class DancersGroup extends Container {
     // private int quantityOfDancers;
 
     public DancersGroup() {
+
         groupID = " ";
         groupHours = 0;
-        setPersons(new DancingStaff[0]);
     }
 
     public DancersGroup(String groupID, int groupHours) {
+        super(new DancingStaff[0]);
         this.groupID = groupID;
         this.groupHours = groupHours;
-        setPersons(new DancingStaff[0]);
+
     }
 
 
@@ -38,11 +39,7 @@ public class DancersGroup extends Container {
         return groupHours;
     }
 
-    public Person[] getDancersArray() {
-        return getPersons();
-    }
-
-    public void changeGroupHours(int groupHours) {
+        public void changeGroupHours(int groupHours) {
         // меняет часы работы в самой группе и  всем участниkам группы
         for (Person person : getPersons()) {
             ((DancingStaff) person).setWorkHoursPerWeek(groupHours - this.groupHours);

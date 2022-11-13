@@ -8,13 +8,12 @@ public class Teacher extends DancingStaff {
     private double salaryCoefficient;
 
     public Teacher() {
+        super();
     }
 
-    public Teacher(String name, double salaryCoefficient, String groupID) {
-        setName(name);
+    public Teacher(String name, double salaryCoefficient) {
+        super(name);
         this.salaryCoefficient = salaryCoefficient;
-        setGroupIDs(new String[0]);
-        addGroupID(groupID);
     }
 
     public String getInfo() {
@@ -28,7 +27,8 @@ public class Teacher extends DancingStaff {
     }
 
      public void setSalaryCoefficient(double salaryCoefficient) {
-        this.salaryCoefficient = salaryCoefficient;
+        if (salaryCoefficient>0){
+        this.salaryCoefficient = salaryCoefficient;}
     }
 
     public double work() {
